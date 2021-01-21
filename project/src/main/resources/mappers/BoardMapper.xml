@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.home.mapper.BoardMapper">
+  
+ 	<select id="getBoardList" resultType="com.home.domain.BoardBean">
+		select * from board order by re_ref desc, re_seq asc limit #{startRow},#{pageSize}
+	</select>
+  	
+  	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from board
+	</select>
+  
+    <update id="updateReadcount">
+  		update board set readcount = readcount + 1 where num = #{num}
+ 	 </update>
+   	
+   	<select id="getBoard" resultType="com.home.domain.BoardBean">
+    	select * from board where num = #{num}
+	</select>  
+  
+    <insert id="insertBoard">
+    		INSERT INTO board(num,name,pass,subject,content,readcount,date,file,re_ref,re_lev,re_seq)
+  		VALUES(#{num},#{name},#{pass},#{subject},#{content},#{readcount},#{date},#{file},#{re_ref},#{re_lev},#{re_seq})
+    </insert>
+  
+    <update id = "updateBoard">
+  		update board set subject = #{subject} , content=#{content} where num = #{num}
+  	</update>
+  
+  	<select id="numCheck" resultType="com.home.domain.BoardBean">
+  		select * from board where num=#{num} and pass=#{pass}
+  	</select>
+  	
+  	<select id="getMaxNum" resultType="java.lang.Integer">
+  		SELECT max(num) FROM board 
+  	</select>
+  
+  	<delete id="deleteBoard">
+  	  		delete from board where num = #{num}
+  	</delete>
+  
+    <update id="updateRe_seq">
+		 update board set re_seq = re_seq+1 where re_ref=#{re_ref} and re_seq > #{re_seq}
+  	</update>
+  	
+</mapper>
