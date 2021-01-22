@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.home.mapper.FBoardMapper">
+  	
+  	<select id="getFBoardList" resultType="com.home.domain.FBoardBean">
+  			select * from fboard ORDER BY num desc
+  	</select>
+  
+  	<select id="getFBoardCount" resultType="java.lang.Integer">
+		select count(*) from fboard
+	</select>
+  
+   <select id="getFBoard" resultType="com.home.domain.FBoardBean">
+   	  	select * from fboard where num = #{num}
+   </select>
+  	
+  		
+  	<select id="numCheck" resultType="com.home.domain.FBoardBean">
+  		select * from fboard where num=#{num} and pass=#{pass}
+  	</select>
+  	
+    <update id="fupdateBoard">
+  		update fboard set subject = #{subject} , content=#{content},file = #{file} where num = #{num}
+  	</update>
+  	
+  	<select id="insertFBoard">
+  		INSERT INTO fboard(num,name,pass,subject,content,readcount,date,file)
+  		  		VALUES(#{num},#{name},#{pass},#{subject},#{content},#{readcount},#{date},#{file})
+  	</select>
+  	
+  	<update id="updateReadcount">
+  		update fboard set readcount = readcount + 1 where num = #{num}
+ 	 </update>
+ 	 
+  	<select id="getMaxNum" resultType="java.lang.Integer">
+  		SELECT max(num) FROM fboard 
+  	</select>
+  </mapper>
