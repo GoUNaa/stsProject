@@ -45,7 +45,7 @@ public class FBoardDAOImpl implements FBoardDAO{
 	@Override
 	public void fupdateBoard(FBoardBean fb) {
 		System.out.println("FBoardDAOImpl - fupdateBoard");
-		sqlSession.update(namespace + ".fupateBoard",fb);
+		sqlSession.update(namespace + ".fupdateBoard",fb);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.home.controller;
 
 import java.io.File;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -116,8 +117,6 @@ public class FBoardController {
     			 
      }
           
-      	 //  /board/fupdate?num=${bb.num}
-        //http://localhost:8080/FunWeb/board/fupdate?num=번호 /board/fupdate　가상주소
         @RequestMapping(value = "/fboard/fupdate", method = RequestMethod.GET)
         public String fupdate(Model model,HttpServletRequest request) {
         	System.out.println("파일보드컨트롤러 - 업데이트겟");
@@ -152,12 +151,22 @@ public class FBoardController {
            
            
            FBoardBean fb=new FBoardBean();
+           fb.setNum(Integer.parseInt(request.getParameter("num")));
            fb.setName(request.getParameter("name"));
            fb.setPass(request.getParameter("pass"));
            fb.setSubject(request.getParameter("subject"));
            fb.setContent(request.getParameter("content"));
+           fb.setDate((new Timestamp(System.currentTimeMillis())));
            fb.setFile(saveName);
-                
+           
+           		System.out.println("-----------------------------");
+           		System.out.println("num : " + fb.getNum());
+                System.out.println("name : " + fb.getName());
+                System.out.println("pass : " + fb.getPass());
+                System.out.println("subject : " + fb.getSubject());
+                System.out.println("content : " + fb.getContent());
+                System.out.println("-----------------------------");
+
            FBoardBean fb2 = fBoardService.numCheck(fb);
            if(fb2!=null) {
               //update board set name=?,subject=?,content=?,file=? where num=?
