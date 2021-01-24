@@ -29,8 +29,6 @@ public class FBoardController {
 	   @Resource(name = "uploadPath")
 	   private String uploadPath;
 	   
-	   //http://localhost:8080/FunWeb/board/flist　　          /board/flist　가상주소
-       //http://localhost:8080/FunWeb/board/flist?pageNum=1　　/board/flist　가상주소
        @RequestMapping(value = "/fboard/flist", method = RequestMethod.GET)
        public String flist(Model model,HttpServletRequest request) {
           PageBean pbBean = new PageBean();
@@ -44,7 +42,6 @@ public class FBoardController {
           }else {
              pbBean.setPageNum(pageNum);
           }
-          // List boardList   = getBoardList(pbBean) 메서드 만들 호출
           List<FBoardBean> fboardList = fBoardService.getFBoardList(pbBean);
           
           //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
@@ -58,31 +55,12 @@ public class FBoardController {
           return "fcenter/fnotice";
        }
 	   
-       //  /board/fupdate?num=${bb.num}
-       //http://localhost:8080/FunWeb/board/fupdate?num=번호 /board/fupdate　가상주소
-       @RequestMapping(value = "/board/fupdate", method = RequestMethod.GET)
-       public String fupdate(Model model,HttpServletRequest request) {
-          //request num 파라미터 가져오기
-          int num=Integer.parseInt(request.getParameter("num"));
-                
-          FBoardBean fb = fBoardService.getFBoard(num);
-                
-          //model 데이터 담아서 보내기
-          model.addAttribute("fb",fb);
-                
-//          /WEB-INF/views/center/fupdateForm.jsp
-          return "center/fupdateForm";
-       }   
        
-       // /board/fwrite
-       //http://localhost:8080/FunWeb/board/fwrite　　/board/fwrite　가상주소
        @RequestMapping(value = "/fboard/fwrite", method = RequestMethod.GET)
        public String fwrite() {
-//          /WEB-INF/views/center/fwriteForm.jsp
           return "fcenter/fwriteForm";
        }
        
-//      　http://localhost:8080/FunWeb/board/fwrite　　　/board/fwrite　가상주소 POST방식
           @RequestMapping(value = "/fboard/fwrite", method = RequestMethod.POST)
           public String fwritePost(HttpServletRequest request,MultipartFile file) throws Exception{
              // 파일이름  랜덤문자_파일이름
@@ -108,7 +86,7 @@ public class FBoardController {
           @RequestMapping(value = "/fboard/fcontent", method = RequestMethod.GET)
           public String fcontent(Model model,HttpServletRequest request) {
              //request num 파라미터 가져오기
-             int num=Integer.parseInt(request.getParameter("num"));
+             int num = Integer.parseInt(request.getParameter("num"));
 
              fBoardService.updateReadcount(num);
              
@@ -138,74 +116,92 @@ public class FBoardController {
     			 
      }
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-       
-       
-       
-       @RequestMapping(value = "/fboard/fupdate", method = RequestMethod.POST)
-       public String fupdatePost(HttpServletRequest request,MultipartFile file, Model model) throws Exception{
-          String saveName="";
-          if(!file.isEmpty()) {
-             // 파일이름  랜덤문자_파일이름
-             UUID uid=UUID.randomUUID();
-             saveName = uid.toString()+"_"+file.getOriginalFilename();
-             System.out.println(uploadPath+":"+saveName);
-             // 실제파일 => upload폴더에 복사
-             File target = new File(uploadPath,saveName);
-             FileCopyUtils.copy(file.getBytes(), target);
-          } else {
-             saveName=request.getParameter("oldfile");
-          }
-          
-          
-          FBoardBean fb=new FBoardBean();
-          fb.setName(request.getParameter("name"));
-          fb.setPass(request.getParameter("pass"));
-          fb.setSubject(request.getParameter("subject"));
-          fb.setContent(request.getParameter("content"));
-          fb.setFile(saveName);
+      	 //  /board/fupdate?num=${bb.num}
+        //http://localhost:8080/FunWeb/board/fupdate?num=번호 /board/fupdate　가상주소
+        @RequestMapping(value = "/fboard/fupdate", method = RequestMethod.GET)
+        public String fupdate(Model model,HttpServletRequest request) {
+        	System.out.println("파일보드컨트롤러 - 업데이트겟");
+           //request num 파라미터 가져오기
+           int num=Integer.parseInt(request.getParameter("num"));
+                 
+           FBoardBean fb = fBoardService.getFBoard(num);
+                 
+           //model 데이터 담아서 보내기
+           model.addAttribute("fb",fb);
+                 
+//           /WEB-INF/views/center/fupdateForm.jsp
+           return "fcenter/fupdateForm";
+        }   
+        
+        
+        @RequestMapping(value = "/fboard/fupdate", method = RequestMethod.POST)
+        public String fupdatePost(HttpServletRequest request,MultipartFile file, Model model) throws Exception{
+        	System.out.println("파일보드컨트롤러 - 업데이트포스트");
+           String saveName="";
+           if(!file.isEmpty()) {
+              // 파일이름  랜덤문자_파일이름
+              UUID uid=UUID.randomUUID();
+              saveName=uid.toString()+"_"+file.getOriginalFilename();
+              System.out.println(uploadPath+":"+saveName);
+              // 실제파일 => upload폴더에 복사
+              File target=new File(uploadPath,saveName);
+              FileCopyUtils.copy(file.getBytes(), target);
+           } else {
+              saveName=request.getParameter("oldfile");
+           }
+           
+           
+           FBoardBean fb=new FBoardBean();
+           fb.setName(request.getParameter("name"));
+           fb.setPass(request.getParameter("pass"));
+           fb.setSubject(request.getParameter("subject"));
+           fb.setContent(request.getParameter("content"));
+           fb.setFile(saveName);
                 
+           FBoardBean fb2 = fBoardService.numCheck(fb);
+           if(fb2!=null) {
+              //update board set name=?,subject=?,content=?,file=? where num=?
+              // // num pass 일치
+              fBoardService.fupdateBoard(fb);
+              // response.sendRedirect() 같음
+              return "redirect:/fboard/flist";
+           }else {
+              // num pass 틀림
+              // msg =" 입력하신 정보는 틀립니다"  model 저장
+              model.addAttribute("msg","입력하신 정보는 틀립니다");
+              return "center/msg";
+           }
+        }
+        
+       // /board/delete?num=${bb.num }
+       @RequestMapping(value = "/fboard/fdelete", method = RequestMethod.GET)
+       public String fdelete(Model model,HttpServletRequest request) {
+          //request num 파라미터 가져오기
+          int num = Integer.parseInt(request.getParameter("num"));
+                
+          FBoardBean fb = fBoardService.getFBoard(num);
+          //model 데이터 담아서 보내기
+          model.addAttribute("fb",fb);
+                
+//          /WEB-INF/views/center/deleteForm.jsp
+          return "fcenter/fdeleteForm";
+       }
+       
+//       　http://localhost:8080/FunWeb/board/fdelete　　　/board/fdelete　가상주소 POST방식
+       @RequestMapping(value = "/fboard/fdelete", method = RequestMethod.POST)
+       public String fdeletePost(FBoardBean fb,Model model) {
+          // num pass 일치 여부 확인
+          // select * from board where num=? and pass=?
           FBoardBean fb2 = fBoardService.numCheck(fb);
+          
           if(fb2 != null) {
-             //update board set name=?,subject=?,content=?,file=? where num=?
+             //delete from board where num=?
              // // num pass 일치
-        	  fBoardService.fupdateBoard(fb);
-//             http://localhost:8080/FunWeb/board/flist 가상주소 이동
+             fBoardService.deleteBoard(fb);
              // response.sendRedirect() 같음
              return "redirect:/fboard/flist";
-          }else {
+             
+          } else {
              // num pass 틀림
              // msg =" 입력하신 정보는 틀립니다"  model 저장
              model.addAttribute("msg","입력하신 정보는 틀립니다");
@@ -213,5 +209,4 @@ public class FBoardController {
              return "fcenter/msg";
           }
        }
-	   
 }

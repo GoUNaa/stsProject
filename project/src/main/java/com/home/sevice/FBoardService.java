@@ -22,4 +22,6 @@ public interface FBoardService {
 
 	public void updateReadcount(int num);
 
+	public void deleteBoard(FBoardBean fb);
+
 }

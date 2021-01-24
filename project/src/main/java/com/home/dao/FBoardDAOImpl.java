@@ -33,7 +33,7 @@ public class FBoardDAOImpl implements FBoardDAO{
 	@Override
 	public FBoardBean getFBoard(int num) {
 		System.out.println("FBoardDAOImpl - getFBoard");
-		return sqlSession.selectOne(namespace +".getFBoard",num );
+		return sqlSession.selectOne(namespace + ".getFBoard",num );
 	}
 
 	@Override
@@ -65,6 +65,12 @@ public class FBoardDAOImpl implements FBoardDAO{
 	public Integer getMaxNum() {
 		System.out.println("FBoardDAOImpl - getMaxNum");
 		return sqlSession.selectOne(namespace + ".getMaxNum");
+	}
+
+	@Override
+	public void deleteBoard(FBoardBean fb) {
+		System.out.println("FBoardDAOImpl - deleteBoard");
+		sqlSession.delete(namespace + ".deleteBoard",fb);
 	}
 	
 	

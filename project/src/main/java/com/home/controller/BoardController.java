@@ -24,8 +24,6 @@ public class BoardController {
 	   @Resource(name = "uploadPath")
 	   private String uploadPath;
 	   
-	//http://localhost:8080/FunWeb/board/list　　          /board/list　가상주소
-	   //http://localhost:8080/FunWeb/board/list?pageNum=1　　/board/list　가상주소
 	   @RequestMapping(value = "/board/list", method = RequestMethod.GET)
 	   public String list(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - list");
@@ -56,7 +54,6 @@ public class BoardController {
 	   }
 	
 	 // 글 보기
-	 //http://localhost:8080/FunWeb/board/content?num=번호 /board/content　가상주소
 	   @RequestMapping(value = "/board/content", method = RequestMethod.GET)
 	   public String content(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - content");
@@ -77,7 +74,6 @@ public class BoardController {
 	   
 	   
 	   // /board/write
-	   //http://localhost:8080/FunWeb/board/write　　/board/write　가상주소
 	   @RequestMapping(value = "/board/write", method = RequestMethod.GET)
 	   public String write() {
     	   System.out.println("보드컨트롤러 - writeGET");
@@ -86,18 +82,15 @@ public class BoardController {
 	      return "center/writeForm";
 	   }
 	   
-//	   　http://localhost:8080/FunWeb/board/write　　　/board/write　가상주소 POST방식
 	   @RequestMapping(value = "/board/write", method = RequestMethod.POST)
 	   public String writePost(BoardBean bb) {
     	   System.out.println("보드컨트롤러 - writePost");
 	      boardService.insertBoard(bb);
 	      
-//	      http://localhost:8080/FunWeb/board/list 가상주소 이동
 	      // response.sendRedirect() 같음
 	      return "redirect:/board/list";
 	   } 
 	   
-       //http://localhost:8080/FunWeb/board/update?num=번호 /board/update　가상주소
        @RequestMapping(value = "/board/update", method = RequestMethod.GET)
        public String update(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - updateGET");
@@ -113,7 +106,6 @@ public class BoardController {
           return "center/updateForm";
        }
        
-//       　http://localhost:8080/FunWeb/board/update　　　/board/update　가상주소 POST방식
        @RequestMapping(value = "/board/update", method = RequestMethod.POST)
        public String updatePost(BoardBean bb,Model model) {
     	   System.out.println("보드컨트롤러 - updatePost");
@@ -124,7 +116,6 @@ public class BoardController {
              //update board set name=?,subject=?,content=? where num=?
              // // num pass 일치
              boardService.updateBoard(bb);
-//             http://localhost:8080/FunWeb/board/list 가상주소 이동
              // response.sendRedirect() 같음
              return "redirect:/board/list";
           }else {
@@ -137,8 +128,6 @@ public class BoardController {
        }
 	   
 	   
-       // /board/delete?num=${bb.num }
-       //http://localhost:8080/FunWeb/board/delete?num=번호 /board/delete　가상주소
        @RequestMapping(value = "/board/delete", method = RequestMethod.GET)
        public String delete(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - deleteGET");
@@ -155,7 +144,6 @@ public class BoardController {
           return "center/deleteForm";
        }
        
-//       　http://localhost:8080/FunWeb/board/delete　　　/board/delete　가상주소 POST방식
        @RequestMapping(value = "/board/delete", method = RequestMethod.POST)
        public String deletePost(BoardBean bb,Model model) {
     	   System.out.println("보드컨트롤러 - deletePost");
@@ -168,7 +156,6 @@ public class BoardController {
              //delete from board where num=?
              // // num pass 일치
              boardService.deleteBoard(bb);
-//             http://localhost:8080/FunWeb/board/list 가상주소 이동
              // response.sendRedirect() 같음
              return "redirect:/board/list";
           }else {
@@ -180,7 +167,6 @@ public class BoardController {
           }
        }
 	   
-	   //http://localhost:8080/FunWeb/board/write　　/board/write　가상주소
 	   @RequestMapping(value = "/board/reWrite", method = RequestMethod.GET)
 	   public String reWrite(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - reWriteGET");
@@ -202,7 +188,6 @@ public class BoardController {
 	      return "center/reWriteForm";
 	   }
 	   
-//	   　http://localhost:8080/FunWeb/board/write　　　/board/write　가상주소 POST방식
 	   @RequestMapping(value = "/board/reWrite", method = RequestMethod.POST)
 	   public String reWritePost(BoardBean bb) {
     	   System.out.println("보드컨트롤러 - reWritePost");

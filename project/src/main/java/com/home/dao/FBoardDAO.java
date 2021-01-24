@@ -22,6 +22,7 @@ public interface FBoardDAO {
 	public void updateReadcount(int num);
 
 	public Integer getMaxNum();
-
+	
+	public void deleteBoard(FBoardBean fb);
 	
 }

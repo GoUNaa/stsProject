@@ -31,7 +31,6 @@ public class MemberController {
 	@Inject
 	private MailServiceImpl mail;
 
-	// http://localhost:8080/FunWeb/main/main /main/main 가상주소
 	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
 	public String main() {
 		System.out.println("MemberController -  main");
@@ -40,7 +39,6 @@ public class MemberController {
 		return "main/main";
 	}
 
-	// http://localhost:8080/FunWeb/member/insert /member/insert 가상주소
 	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
 	public String insert() {
 		System.out.println("MemberController -  insert");
@@ -49,7 +47,6 @@ public class MemberController {
 		return "member/join";
 	}
 
-	// http://localhost:8080/FunWeb/member/insert /member/insert 가상주소
 	@RequestMapping(value = "/member/insert", method = RequestMethod.POST)
 	public String insertPost(MemberBean mb, HttpServletRequest request) {
 		System.out.println("MemberController -  insertPost");
@@ -120,7 +117,6 @@ public class MemberController {
 		}
 	}
 
-	// http://localhost:8080/FunWeb/member/logout /member/logout 가상주소
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		System.out.println("MemberController - logout");
@@ -131,7 +127,6 @@ public class MemberController {
 		return "redirect:/main/main";
 	}
 
-	// http://localhost:8080/FunWeb/member/logout /member/logout 가상주소
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		System.out.println("MemberController - update");

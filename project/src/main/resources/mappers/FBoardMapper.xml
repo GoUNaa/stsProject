@@ -14,7 +14,7 @@
 	</select>
   
    <select id="getFBoard" resultType="com.home.domain.FBoardBean">
-   	  	select * from fboard where num = #{num}
+    	select * from fboard where num = #{num}
    </select>
   	
   		
@@ -23,7 +23,7 @@
   	</select>
   	
     <update id="fupdateBoard">
-  		update fboard set subject = #{subject} , content=#{content},file = #{file} where num = #{num}
+  		update fboard set subject = #{subject}, content=#{content}, file = #{file} where num = #{num}
   	</update>
   	
   	<select id="insertFBoard">
@@ -38,4 +38,8 @@
   	<select id="getMaxNum" resultType="java.lang.Integer">
   		SELECT max(num) FROM fboard 
   	</select>
+  	
+  	<delete id="deleteBoard">
+  		delete from fboard where num=#{num}
+  	</delete>
   </mapper>

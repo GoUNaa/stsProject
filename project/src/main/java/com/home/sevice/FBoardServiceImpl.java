@@ -69,6 +69,12 @@ public class FBoardServiceImpl implements FBoardService {
 		fBoardDAO.updateReadcount(num);
 	}
 
+	@Override
+	public void deleteBoard(FBoardBean fb) {
+		System.out.println("FBoardServiceImpl - deleteBoard");
+		fBoardDAO.deleteBoard(fb);
+	}
+
 	
 	
 	
