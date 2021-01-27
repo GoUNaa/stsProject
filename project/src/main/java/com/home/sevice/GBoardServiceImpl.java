@@ -1,5 +1,6 @@
 package com.home.sevice;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +25,44 @@ public class GBoardServiceImpl implements GBoardService {
 	@Override
 	public Integer getGBoardCount() {
 		return gBoardDAO.getGBoardCount();
+	}
+
+	@Override
+	public void insertGBoard(GBoardBean gb) {
+		if(gBoardDAO.getMaxNum() == null) {
+			gb.setNum(1);
+		} else {
+			gb.setNum(gBoardDAO.getMaxNum()+1); // 일반글번호(기준글) (num최대값 +1)
+
+		}
+		gb.setDate(new Timestamp(System.currentTimeMillis())); // 현재 날짜
+		gBoardDAO.insertGBoard(gb);
+	}
+
+	@Override
+	public void updateReadCount(int num) {
+		 gBoardDAO.updateReadCount(num);
+
+	}
+
+	@Override
+	public GBoardBean getGBoard(int num) {
+		return gBoardDAO.getGBoard(num);
+	}
+
+	@Override
+	public GBoardBean numCheck(GBoardBean gb) {
+		return gBoardDAO.numCheck(gb);
+	}
+
+	@Override
+	public void updateGBoard(GBoardBean gb) {
+		gBoardDAO.updateGBoard(gb);
+	}
+
+	@Override
+	public void deleteBoard(GBoardBean gb) {
+		gBoardDAO.deleteBoard(gb);
 	}
 	
 	

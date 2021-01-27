@@ -33,20 +33,17 @@
 
 <!-- 게시판 -->
 <article>
-<h1>파일 게시물 수정</h1>
-<form action='<c:url value="/fboard/fupdate"/> ' method="post" enctype="multipart/form-data">
-<input type="hidden" name="num" value="${fb.num }">
-<input type="hidden" name="name" value="${fb.name }">
-<input type="hidden" name=pass value="${fb.pass }">
-
+<h1>갤러리 게시물 수정</h1>
+<form action='<c:url value="/gboard/gupdate" />' method="post" enctype="multipart/form-data">
+<input type="hidden" name="num" value="${gb.num }">
 <table id="notice">
-<tr><td>글쓴이</td><td>${fb.name }</td></tr>
+<tr><td>글쓴이</td><td>${gb.name }</td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
-<tr><td>제목</td> <td><input type="text" name="subject" value=" ${fb.subject }"></td></tr>
+<tr><td>제목</td> <td><input type="text" name="subject" value=" ${gb.subject }"></td></tr>
 <tr><td>파일</td> <td><input type="file" name="file">
-  <input type="hidden" name="oldfile" value="${fb.file }">${fb.file }</td></tr>
+  <input type="hidden" name="oldfile" value="${gb.file }">${gb.file }</td></tr>
 <tr><td>글내용</td>
-    <td><textarea name="content" rows="10" cols="20">${fb.content }</textarea></td></tr>
+    <td><textarea name="content" rows="10" cols="20">${gb.content }</textarea></td></tr>
 
 </table>
 <div id="table_search">

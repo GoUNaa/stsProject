@@ -13,16 +13,34 @@
   	select count(*) from gboard
   </select>
   
+  <insert id="insertGBoard">
+	insert into gboard(num,name,pass,subject,content,readcount,date,file)
+	values(#{num},#{name},#{pass},#{subject},#{content},#{readcount},#{date},#{file});
+  </insert>
   
+  <select id="getGBoard" resultType="com.home.domain.GBoardBean">
+  	    	select * from gboard where num = #{num}
+  </select>
   
+  <update id="updateReadCount">
+  	  		update gboard set readcount = readcount + 1 where num = #{num}
+  </update>
   
+   <select id="getMaxNum" resultType="java.lang.Integer">
+  			select max(num) from gboard 
+  	</select>
   
+   <select id="numCheck" resultType="com.home.domain.GBoardBean">
+   		select * from gboard where num = #{num} and pass=#{pass}
+   </select>
   
+  <update id="updateGBoard">
+  	  	update gboard set subject = #{subject}, content=#{content}, file = #{file} where num = #{num}
+  </update>
   
-  
-  
-  
-  
+  <delete id="deleteBoard">
+  	delete from gboard where num = #{num}
+  </delete>
   
   
   

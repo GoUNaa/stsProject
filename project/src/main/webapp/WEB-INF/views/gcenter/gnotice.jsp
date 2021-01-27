@@ -47,14 +47,13 @@
 <div id="table_search">
 <c:if test="${!empty sessionScope.id}">
 	<input type="button" value="글쓰기" class="btn" 
-    onclick="location.href='<c:url value="/fboard/fwrite"/>'">
+    onclick="location.href='<c:url value="/gboard/gwrite"/>'">
 </c:if>
 </div>
 <table >
 <tr><td style="border-bottom:2px solid #DBDBDB" colspan="4"></td></tr>
-<c:set var="newLine" value="0"></c:set>
-<c:set var="articleCount" value="0"></c:set>
 
+<c:set var="newLine" value="0"></c:set>
 <c:forEach var="gb" items="${gboardList }">
 
  <c:if test="${newLine == 0}">
@@ -63,23 +62,23 @@
  	%>
  </c:if>
  <c:set var="newLine" value="${newLine+1 }"></c:set>
-<c:set var="articleCount" value="${articleCount +1}"></c:set>
+	<% System.out.println("newLine"); %>
 	<td>
  	<input type="hidden" value="${gb.num}" name="num" >
- 	<a href='<c:url value = "gcontent.jsp?num=${gb.num}" />>' ><img src='<c:url value="/resources/upload/${gb.file }"/>'  width = "150" height="150"><br></a>
- 	<Div id="did">${gb.name}<Br><a href='<c:url value="gcontent.jsp?num=${gb.num }" />' >${gb.subject}</a><Br>
+ 	<a href='<c:url value="/gboard/gcontent?num=${gb.num }" />' ><img src='<c:url value="/resources/uploads/${gb.file }"/>'  width = "150" height="150"><br></a>
+ 	<Div id="did">${gb.name}<Br><a href='<c:url value="/gboard/gcontent?num=${gb.num }" />' >${gb.subject}</a><Br>
  <fmt:formatDate value="${gb.date}" type="both" pattern="yyyy.MM.dd"/></div>
  	
 	<Br>
  	</td>
- 	</c:forEach>
  	
-<c:if test="${newLine == 4}">
-	<%
-	 out.print("</tr>");
-	%>
-	<c:set var="newLine">0</c:set>
-</c:if>
+ <c:if test="${newLine == 4}">
+ 	<%
+ 	 out.print("</tr>");
+ 	%>
+	<c:set var="newLine" value="0"></c:set>
+ </c:if>
+ 	</c:forEach>
 
 </table>
 <div id="a">

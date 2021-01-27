@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +19,6 @@
 <!-- 본문들어가는 곳 -->
 <!-- 메인이미지 -->
 <div id="sub_img_center"></div>
-<!-- 메인이미지 -->
-
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
@@ -29,37 +27,31 @@
 <li><a href='<c:url value="/gboard/glist"/>' >Gallery Notice</a></li>
 </ul>
 </nav>
-<!-- 왼쪽메뉴 -->
-
-<!-- 게시판 -->
 <article>
-<h1>파일 게시물 수정</h1>
-<form action='<c:url value="/fboard/fupdate"/> ' method="post" enctype="multipart/form-data">
-<input type="hidden" name="num" value="${fb.num }">
-<input type="hidden" name="name" value="${fb.name }">
-<input type="hidden" name=pass value="${fb.pass }">
-
+<h1>갤러리 게시물 삭제</h1>
+<form action='<c:url value="/gboard/gdelete"/>' method="post">
+<input type="hidden" name="num" value="${gb.num }">
 <table id="notice">
-<tr><td>글쓴이</td><td>${fb.name }</td></tr>
-<tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
-<tr><td>제목</td> <td><input type="text" name="subject" value=" ${fb.subject }"></td></tr>
-<tr><td>파일</td> <td><input type="file" name="file">
-  <input type="hidden" name="oldfile" value="${fb.file }">${fb.file }</td></tr>
-<tr><td>글내용</td>
-    <td><textarea name="content" rows="10" cols="20">${fb.content }</textarea></td></tr>
+
+<tr><td>글번호</td><td>${gb.num }</td> <td>글쓴날짜</td><td>${gb.date }</td></tr>
+<tr><td>작성자</td><td>${gb.name }</td><td>조회수</td><td>${gb.readcount }</td></tr>
+<tr><td>제목</td><td colspan="3">${gb.subject}</td></tr>
+<tr><td>내용</td><td colspan="3"> <br>
+	<img src='<c:url value="/resources/uploads/${gb.file }" />' width="100" height="100"><Br>${gb.content }</td></tr>
+<tr><td>비밀번호</td><td colspan="3"><input type="password" name="pass"></td></tr>
+
+
+
+<div id="table_search">
+<input type="submit" value="삭제">
+</div>
 
 </table>
-<div id="table_search">
-<input type="submit" value="글수정" class="btn">
-</div>
 </form>
-
-
-<div class="clear"></div>
-<div id="page_control">
-
-</div>
 </article>
+
+
+
 <!-- 게시판 -->
 <!-- 본문들어가는 곳 -->
 <div class="clear"></div>
@@ -67,5 +59,7 @@
 <jsp:include page="../inc/bottom.jsp"/>
 <!-- 푸터들어가는 곳 -->
 </div>
+</body>
+</html>
 </body>
 </html>

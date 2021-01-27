@@ -25,6 +25,41 @@ public class GBoardDAOImpl implements GBoardDAO {
 	public Integer getGBoardCount() {
 		return sqlSession.selectOne(namespace + ".getGBoardCount");
 	}
+
+	@Override
+	public void insertGBoard(GBoardBean gb) {
+		sqlSession.insert(namespace + ".insertGBoard",gb);
+	}
+
+	@Override
+	public void updateReadCount(int num) {
+		sqlSession.update(namespace + ".updateReadCount",num);
+	}
+
+	@Override
+	public GBoardBean getGBoard(int num) {
+		return sqlSession.selectOne(namespace + ".getGBoard",num);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		return sqlSession.selectOne(namespace + ".getMaxNum");
+	}
+
+	@Override
+	public GBoardBean numCheck(GBoardBean gb) {
+		return sqlSession.selectOne(namespace + ".numCheck",gb);
+	}
+
+	@Override
+	public void updateGBoard(GBoardBean gb) {
+		sqlSession.update(namespace + ".updateGBoard" , gb);
+	}
+
+	@Override
+	public void deleteBoard(GBoardBean gb) {
+		sqlSession.delete(namespace + ".deleteBoard",gb);
+	}
 	
 	
 	
