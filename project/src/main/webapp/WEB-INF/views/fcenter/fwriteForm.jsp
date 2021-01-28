@@ -67,7 +67,7 @@ function check(){
 
 </table>
 <div id="table_search">
-<input type="submit" value="글쓰기" class="btn" onclick = "return check()" >
+<input type="submit" value="글쓰기" class="btn" onclick = "return check()" id="Btn">
 </div>
 </form>
 

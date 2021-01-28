@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link href='<c:url value="/resources/css/default.css"/>' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/subpage.css"/>' rel="stylesheet" type="text/css">
-
+<link href='<c:url value="/resources/css/plus.css"/>' rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -103,7 +103,7 @@ $(document).ready(function(){
 <legend>Basic Info</legend>
 <label>User ID</label>
 <input type="text" name="id" class="id">
-<input type="button" value="dup. check" class="dup">
+<input type="button" value="dup. check" class="dup" id="dupCheck">
 <div id="re"></div><br> <!-- onclick="dupCheck()" -->
 <label>Password</label>
 <input type="password" name="pass"><br>
@@ -192,8 +192,8 @@ $(document).ready(function(){
 </fieldset>
 <div class="clear"></div>
 <div id="buttons">
-<input type="Submit" value="회원가입" class="submit">
-<input type="reset" value="Cancel" class="cancel">
+<input type="Submit" value="회원가입" class="submit" id = "joinOk">
+<input type="reset" value="Cancel" class="cancel" id="joinNo">
 </div>
 </form>
 </article>

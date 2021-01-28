@@ -153,8 +153,8 @@ $('.dup').click(function(){
 </fieldset>
 <div class="clear"></div>
 <div id="buttons">
-<input type="Submit" value="Submit" class="submit">
-<input type="button" value="회원탈퇴"  onclick="dele()" class="cancel">
+<input type="Submit" value="Submit" class="submit" id="updateOk">
+<input type="button" value="회원탈퇴"  onclick="dele()" class="cancel" id="updateNo">
 </div>
 </form>
 </article>

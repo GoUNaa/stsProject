@@ -46,4 +46,12 @@
 		 update board set re_seq = re_seq+1 where re_ref=#{re_ref} and re_seq > #{re_seq}
   	</update>
   	
+  	<select id="listSearch" resultType="com.home.domain.BoardBean">
+  		select * from board where subject like CONCAT ('%',#{search},'%') order by num desc
+
+  	</select>
+  	
+  	<select id="getSearchCount" resultType="java.lang.Integer">
+  		select count(*) from board where subject like CONCAT ('%',#{search},'%')
+  	</select>
 </mapper>

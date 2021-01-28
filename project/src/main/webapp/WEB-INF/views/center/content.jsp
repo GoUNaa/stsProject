@@ -40,12 +40,12 @@
 <div id="table_search">
 <c:if test="${! empty sessionScope.id }">
    <c:if test="${sessionScope.id eq bb.name}">
-      <input type="button" value="글수정" class="btn" onclick="location.href='<c:url value="/board/update?num=${bb.num}"/>'">
-      <input type="button" value="글삭제" class="btn" onclick="location.href='<c:url value="/board/delete?num=${bb.num}"/>'">
+      <input type="button" value="글수정" class="btn" id="Btn" onclick="location.href='<c:url value="/board/update?num=${bb.num}"/>'">
+      <input type="button" value="글삭제" class="btn" id="Btn" onclick="location.href='<c:url value="/board/delete?num=${bb.num}"/>'">
    </c:if>
-      <input type="button" value="답글쓰기" class="btn" onclick="location.href='<c:url value="/board/reWrite?num=${bb.num}&re_ref=${bb.re_ref}&re_lev=${bb.re_lev}&re_seq=${bb.re_seq}"/>'">
+      <input type="button" value="답글쓰기" class="btn" id="Btn" onclick="location.href='<c:url value="/board/reWrite?num=${bb.num}&re_ref=${bb.re_ref}&re_lev=${bb.re_lev}&re_seq=${bb.re_seq}"/>'">
 </c:if>
-<input type="button" value="글목록" class="btn" onclick="location.href='<c:url value="/board/list"/>'">
+<input type="button" value="글목록" class="btn" id="Btn" onclick="location.href='<c:url value="/board/list"/>'">
 </div>
 
 </table>

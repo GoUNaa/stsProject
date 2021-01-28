@@ -46,7 +46,7 @@
 <h1>Gallery Notice</h1>
 <div id="table_search">
 <c:if test="${!empty sessionScope.id}">
-	<input type="button" value="글쓰기" class="btn" 
+	<input type="button" value="글쓰기" class="btn" id="Btn"
     onclick="location.href='<c:url value="/gboard/gwrite"/>'">
 </c:if>
 </div>
@@ -94,15 +94,15 @@
 </div>
 <div id="table_search">
 <form action="gnoticeSearch.jsp" method="post">
-<input type="text" name="search" class="input_box"><br>
-<input type="submit" value="search" class="btn" >
+<input type="text" name="search" class="input_box">
+<input type="submit" value="search" class="btn" id="Btn">
 </form>
 </div>
 
 
 <div class="clear"></div>
 <div id="page_control">
-전체 글 - ${pbBean.count}
+전체 글  ${pbBean.count}
 </div>
 </article>
 <!-- 게시판 -->

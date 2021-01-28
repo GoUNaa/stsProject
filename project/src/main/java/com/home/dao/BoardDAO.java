@@ -28,8 +28,10 @@ public interface BoardDAO {
 	
 	public void updateRe_seq(BoardBean bb);
 
-	
-	
+	public List<BoardBean> listSearch(PageBean pbBean);
+
+	public Integer getSearchCount(PageBean pbBean);
+
 	
 	
 }

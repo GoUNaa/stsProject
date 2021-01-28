@@ -44,7 +44,7 @@
 <h1>Notice</h1>
 <div id="table_search">
 <c:if test="${!empty sessionScope.id}">
-	<input type="button" value="글쓰기" class="btn" 
+	<input type="button" value="글쓰기" class="btn" id="Btn"
     onclick="location.href='<c:url value="/board/write"/>'">
 </c:if>
 </div>
@@ -90,9 +90,9 @@
 
 </div>
 <div id="table_search">
-<form action='<c:url value="/board/listSearch"/>' method="post">
-<input type="text" name="search" class="input_box">
-<input type="submit" value="search" class="btn">
+<form action='<c:url value="/board/list"/>' method="get" class="search">
+<input type="text" name="search" class="input_box" value="${pbBean.search }">
+<input type="submit" value="search" class="btn" id="Btn">
 </form>
 </div>
 <div class="clear"></div>

@@ -79,6 +79,20 @@ quis ante......</dd>
    </tr>
 </thead>
 <tbody>
+<c:forEach var="bb" items="${boardList }" end="10">
+
+   <tr>
+      <td class = boardNum>${bb.num }</td>
+      <td class = boardTitle><a href='<c:url value="/board/content?num=${bb.num}" />'>${bb.subject }</a></td>
+      <td class = boardUserName>${bb.name }</td>
+      <td class = boardReadCount>${bb.readcount}</td>
+	   <td class = tableRegDate>${bb.date}</td>
+     
+      
+   </tr>
+
+	
+</c:forEach>
 
 </tbody>
 </table>

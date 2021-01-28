@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="map" style="width: 100%; height: 780px;"></div>
+	<div id="map" style="width: 70%; height: 780px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=402f941bbf8a0179215972a22181a188"></script>
 <script>
 		var container = document.getElementById('map');

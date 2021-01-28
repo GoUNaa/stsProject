@@ -40,15 +40,12 @@
 <tr><td>비밀번호</td><td colspan="3"><input type="password" name="pass"></td></tr>
 
 
+</table>
 
 <div id="table_search">
-<input type="submit" value="삭제">
-<%-- <input type="button" value="글수정" onclick="location.href='updateForm.jsp?num=<%=bb.getNum()%>'"> --%>
-<%-- <input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=bb.getNum()%>'"> --%>
-<!-- <input type="button" value="글목록" onclick="location.href='notice.jsp'"> -->
+<input type="submit" id="Btn" value="삭제" class="btn">
 </div>
 
-</table>
 </form>
 </article>
 

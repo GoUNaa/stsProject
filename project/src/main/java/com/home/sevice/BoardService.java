@@ -28,8 +28,10 @@ public interface BoardService {
 	
 	public void reInsertBoard(BoardBean bb);
 
-	
-	
+	public List<BoardBean> listSearch(PageBean pbBean);
+
+	public Integer getSearchCount(PageBean pbBean);
+
 	
 	
 }

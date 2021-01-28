@@ -52,7 +52,7 @@
 
 </table>
 <div id="table_search">
-<input type="submit" value="글쓰기" class="btn">
+<input type="submit" value="글쓰기" class="btn" id="Btn">
 </div>
 </form>
 

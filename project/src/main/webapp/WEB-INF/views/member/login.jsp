@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link href='<c:url value="/resources/css/default.css"/>' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/subpage.css"/>' rel="stylesheet" type="text/css">
+<link href='<c:url value="/resources/css/plus.css"/>' rel="stylesheet" type="text/css">
 
 
 </head>
@@ -39,8 +40,8 @@
 </fieldset>
 <div class="clear"></div>
 <div id="buttons">
-<input type="Submit" value="Submit" class="submit">
-<input type="reset" value="Cancel" class="cancel">
+<input type="Submit" value="Submit" class="submit" id = "loginOk">
+<input type="reset" value="Cancel" class="cancel" id = "loginNo">
 </div>
 </form>
 </article>

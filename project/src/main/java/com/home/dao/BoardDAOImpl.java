@@ -78,6 +78,16 @@ public class BoardDAOImpl implements BoardDAO {
 		System.out.println("BoardDAOImpl - updateRe_seq");
 		sqlSession.update(namespace + ".updateRe_seq" , bb);		
 	}
+
+	@Override
+	public List<BoardBean> listSearch(PageBean pbBean) {
+		return sqlSession.selectList(namespace + ".listSearch",pbBean);
+	}
+
+	@Override
+	public Integer getSearchCount(PageBean pbBean) {
+		return sqlSession.selectOne(namespace + ".getSearchCount",pbBean);
+	}
 	
 	
 }

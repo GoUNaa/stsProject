@@ -42,11 +42,11 @@
 
 
 
-<div id="table_search">
-<input type="submit" value="삭제">
-</div>
 
 </table>
+<div id="table_search">
+<input type="submit" value="삭제" id="Btn" class="btn">
+</div>
 </form>
 </article>
 

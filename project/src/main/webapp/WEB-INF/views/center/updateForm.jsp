@@ -45,7 +45,7 @@
 
 </table>
 <div id="table_search">
-<input type="submit" value="글수정" class="btn">
+<input type="submit" value="글수정" class="btn" id="Btn">
 </div>
 </form>
 

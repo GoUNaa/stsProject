@@ -7,6 +7,8 @@ public class PageBean {
 	private int currentPage;
 	private int startRow;
 	
+	private String search;
+	
 	private int pageBlock;
 	private int startPage;
 	private int endPage;
@@ -14,6 +16,12 @@ public class PageBean {
 	
 	public int getCount() {
 		return count;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
 	}
 	public void setCount(int count) {
 		this.count = count;

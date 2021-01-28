@@ -43,11 +43,11 @@
 <div id="table_search">
 <c:if test="${! empty sessionScope.id }">
    <c:if test="${sessionScope.id eq fb.name}">
-      <input type="button" value="글수정" class="btn" onclick="location.href='<c:url value="/fboard/fupdate?num=${fb.num}"/>'">
-      <input type="button" value="글삭제" class="btn" onclick="location.href='<c:url value="/fboard/fdelete?num=${fb.num}"/>'">
+      <input type="button" value="글수정" class="btn" id="Btn" onclick="location.href='<c:url value="/fboard/fupdate?num=${fb.num}"/>'">
+      <input type="button" value="글삭제" class="btn" id="Btn" onclick="location.href='<c:url value="/fboard/fdelete?num=${fb.num}"/>'">
    </c:if>
 </c:if>
-<input type="button" value="글목록" class="btn" onclick="location.href='<c:url value="/fboard/flist"/>'">
+<input type="button" value="글목록" class="btn" id="Btn" onclick="location.href='<c:url value="/fboard/flist"/>'">
 </div>
 
 </table>

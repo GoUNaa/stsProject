@@ -19,7 +19,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.home.domain.BoardBean;
 import com.home.domain.MemberBean;
+import com.home.domain.PageBean;
+import com.home.sevice.BoardService;
 import com.home.sevice.MailServiceImpl;
 import com.home.sevice.MemberService;
 
@@ -27,13 +30,24 @@ import com.home.sevice.MemberService;
 public class MemberController {
 	@Inject
 	private MemberService memberService;
-
+	
+	@Inject
+	private BoardService boardService;
+	
 	@Inject
 	private MailServiceImpl mail;
-
+	
+	
+	
 	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
-	public String main() {
+	public String main( Model model) {
 		System.out.println("MemberController -  main");
+	    PageBean pbBean=new PageBean();
+	    pbBean.setPageSize(10);
+	    List<BoardBean> boardList = boardService.getBoardList(pbBean);
+		
+		model.addAttribute("boardList", boardList);
+	    model.addAttribute("pbBean",pbBean);
 
 		// main.jsp 이동
 		return "main/main";

@@ -43,11 +43,11 @@ ${gb.content}
 <div id="table_search">
 <c:if test="${! empty sessionScope.id }">
    <c:if test="${sessionScope.id eq gb.name}">
-      <input type="button" value="글수정" class="btn" onclick="location.href='<c:url value="/gboard/gupdate?num=${gb.num}"/>'">
-      <input type="button" value="글삭제" class="btn" onclick="location.href='<c:url value="/gboard/gdelete?num=${gb.num}"/>'">
+      <input type="button" value="글수정" class="btn" id="Btn" onclick="location.href='<c:url value="/gboard/gupdate?num=${gb.num}"/>'">
+      <input type="button" value="글삭제" class="btn" id="Btn" onclick="location.href='<c:url value="/gboard/gdelete?num=${gb.num}"/>'">
    </c:if>
 </c:if>
-<input type="button" value="글목록" class="btn" onclick="location.href='<c:url value="/gboard/glist"/>'">
+<input type="button" value="글목록" class="btn" id="Btn" onclick="location.href='<c:url value="/gboard/glist"/>'">
 </div>
 
 

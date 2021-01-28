@@ -27,10 +27,12 @@ public class BoardController {
 	   @RequestMapping(value = "/board/list", method = RequestMethod.GET)
 	   public String list(Model model,HttpServletRequest request) {
     	   System.out.println("보드컨트롤러 - list");
+    	   String search = request.getParameter("search");
 
 	      PageBean pbBean=new PageBean();
 	      // 한페이지에 보여줄 글개수 설정 pageSize
 	      pbBean.setPageSize(15);
+
 	   //  pageNum 파라미터 가져오기
 	      String pageNum=request.getParameter("pageNum");
 	      // pageNum없으면  "1" 페이지 설정
@@ -40,10 +42,16 @@ public class BoardController {
 	         pbBean.setPageNum(pageNum);
 	      }
 	      // List boardList   = getBoardList(pbBean) 메서드 만들 호출
-	      List<BoardBean> boardList=boardService.getBoardList(pbBean);
-	      
+	      if(search != null){
+	  	      pbBean.setSearch(search);
+	      } else {
+	    	  pbBean.setSearch("");
+
+	      }
+	      List<BoardBean> boardList=boardService.listSearch(pbBean);
+
 	      //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
-	      pbBean.setCount(boardService.getBoardCount());
+	      pbBean.setCount(boardService.getSearchCount(pbBean));
 	      
 	      //model 데이터 담아서 보내기
 	      model.addAttribute("boardList",boardList);
@@ -195,8 +203,6 @@ public class BoardController {
 	      
 	      return "redirect:/board/list";
 	   } 
-	   
-	   
 	   
 	   
 	   

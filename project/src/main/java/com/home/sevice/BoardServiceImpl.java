@@ -98,6 +98,16 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.insertBoard(bb);
 	
 	}
+
+	@Override
+	public List<BoardBean> listSearch(PageBean pbBean) {
+		return boardDAO.listSearch(pbBean);
+	}
+
+	@Override
+	public Integer getSearchCount(PageBean pbBean) {
+		return boardDAO.getSearchCount(pbBean);
+	}
 	
 	
 }
