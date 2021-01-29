@@ -42,4 +42,15 @@
   	<delete id="deleteBoard">
   		delete from fboard where num=#{num}
   	</delete>
+  	
+  	
+  	<select id="listSearch" resultType="com.home.domain.BoardBean">
+  		select * from fboard where subject like CONCAT ('%',#{search},'%') order by num desc
+  	</select>
+  	
+  	<select id="getSearchCount" resultType="java.lang.Integer">
+  		select count(*) from fboard where subject like CONCAT ('%',#{search},'%') 
+  	</select>
+  	
+  	
   </mapper>

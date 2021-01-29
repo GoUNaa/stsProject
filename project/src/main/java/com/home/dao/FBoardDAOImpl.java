@@ -72,6 +72,16 @@ public class FBoardDAOImpl implements FBoardDAO{
 		System.out.println("FBoardDAOImpl - deleteBoard");
 		sqlSession.delete(namespace + ".deleteBoard",fb);
 	}
+
+	@Override
+	public List<FBoardBean> listSearch(PageBean pbBean) {
+		return sqlSession.selectList(namespace + ".listSearch",pbBean);
+	}
+
+	@Override
+	public Integer getSearchCount(PageBean pbBean) {
+		return sqlSession.selectOne(namespace + ".getSearchCount",pbBean);
+	}
 	
 	
 	

@@ -93,8 +93,8 @@
 </c:if>
 </div>
 <div id="table_search">
-<form action="gnoticeSearch.jsp" method="post">
-<input type="text" name="search" class="input_box">
+<form action='<c:url value="/gboard/glist"/>' method="get">
+<input type="text" name="search" class="input_box" value="${pbBean.search }">
 <input type="submit" value="search" class="btn" id="Btn">
 </form>
 </div>
@@ -102,7 +102,7 @@
 
 <div class="clear"></div>
 <div id="page_control">
-전체 글  ${pbBean.count}
+전체 글 - ${pbBean.count}
 </div>
 </article>
 <!-- 게시판 -->

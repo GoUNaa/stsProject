@@ -31,6 +31,7 @@ public class GBoardController {
 	 
 	  @RequestMapping(value = "/gboard/glist", method = RequestMethod.GET)
       public String flist(Model model,HttpServletRequest request) {
+		  String search = request.getParameter("search");
          PageBean pbBean = new PageBean();
          // 한페이지에 보여줄 글개수 설정 pageSize
          pbBean.setPageSize(15);
@@ -42,14 +43,18 @@ public class GBoardController {
          }else {
             pbBean.setPageNum(pageNum);
          }
-         List<GBoardBean> gboardList = gBoardService.getGBoardList(pbBean);
-         if(gboardList == null) {
-        	 System.out.println("gboardList 널");
-        	 System.out.println(gboardList);
-
+         
+         if(search != null) {
+        	 pbBean.setSearch(search);
+         } else {
+        	 pbBean.setSearch("");
          }
+         
+         List<GBoardBean> gboardList = gBoardService.listSearch(pbBean);
+
+         
          //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
-         pbBean.setCount(gBoardService.getGBoardCount());
+         pbBean.setCount(gBoardService.SearchCount(pbBean));
          
          //model 데이터 담아서 보내기
          model.addAttribute("gboardList",gboardList);

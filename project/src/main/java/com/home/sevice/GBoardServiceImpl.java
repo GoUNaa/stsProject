@@ -64,6 +64,16 @@ public class GBoardServiceImpl implements GBoardService {
 	public void deleteBoard(GBoardBean gb) {
 		gBoardDAO.deleteBoard(gb);
 	}
+
+	@Override
+	public List<GBoardBean> listSearch(PageBean pbBean) {
+		return gBoardDAO.listSearch(pbBean);
+	}
+
+	@Override
+	public Integer SearchCount(PageBean pbBean) {
+		return gBoardDAO.SearchCount(pbBean);
+	}
 	
 	
 	

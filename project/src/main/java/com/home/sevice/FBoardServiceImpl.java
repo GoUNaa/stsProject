@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.home.dao.FBoardDAO;
@@ -73,6 +72,16 @@ public class FBoardServiceImpl implements FBoardService {
 	public void deleteBoard(FBoardBean fb) {
 		System.out.println("FBoardServiceImpl - deleteBoard");
 		fBoardDAO.deleteBoard(fb);
+	}
+
+	@Override
+	public List<FBoardBean> listSearch(PageBean pbBean) {
+		return fBoardDAO.listSearch(pbBean);
+	}
+
+	@Override
+	public Integer getSearchCount(PageBean pbBean) {
+		return fBoardDAO.getSearchCount(pbBean);
 	}
 
 	

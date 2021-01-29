@@ -42,9 +42,13 @@
   	delete from gboard where num = #{num}
   </delete>
   
+  <select id="listSearch" resultType="com.home.domain.GBoardBean">
+  		select * from gboard where subject like CONCAT('%',#{search},'%') order by num desc
+  </select>
   
-  
-  
+  <select id="SearchCount" resultType="java.lang.Integer">
+  	select count(*) from gboard where subject like CONCAT ('%',#{search},'%')
+  </select>
   
   
   

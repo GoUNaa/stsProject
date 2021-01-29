@@ -21,4 +21,8 @@ public interface GBoardService {
     public void updateGBoard(GBoardBean gb);
     
     public void deleteBoard(GBoardBean gb);
+    
+    public List<GBoardBean> listSearch(PageBean pbBean);
+    
+    public Integer SearchCount(PageBean pbBean);
 }

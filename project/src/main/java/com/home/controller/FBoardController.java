@@ -32,6 +32,8 @@ public class FBoardController {
 	   
        @RequestMapping(value = "/fboard/flist", method = RequestMethod.GET)
        public String flist(Model model,HttpServletRequest request) {
+    	   String search = request.getParameter("search");
+    	   
           PageBean pbBean = new PageBean();
           // 한페이지에 보여줄 글개수 설정 pageSize
           pbBean.setPageSize(15);
@@ -43,10 +45,16 @@ public class FBoardController {
           }else {
              pbBean.setPageNum(pageNum);
           }
-          List<FBoardBean> fboardList = fBoardService.getFBoardList(pbBean);
+          
+          if(search != null) {
+        	  pbBean.setSearch(search);
+          } else {
+        	  pbBean.setSearch("");
+          }
+          List<FBoardBean> fboardList = fBoardService.listSearch(pbBean);
           
           //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
-          pbBean.setCount(fBoardService.getFBoardCount());
+          pbBean.setCount(fBoardService.getSearchCount(pbBean));
           
           //model 데이터 담아서 보내기
           model.addAttribute("fboardList",fboardList);

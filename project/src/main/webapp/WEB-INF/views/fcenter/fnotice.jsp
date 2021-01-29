@@ -83,8 +83,8 @@
 
 </div>
 <div id="table_search">
-<form action="fnoticeSearch.jsp" method="post">
-<input type="text" name="search" class="input_box">
+<form action='<c:url value="/fboard/flist"/>' method="get">
+<input type="text" name="search" class="input_box" value="${pbBean.search }">
 <input type="submit" value="search" class="btn" id="Btn">
 </form>
 </div>

@@ -60,6 +60,16 @@ public class GBoardDAOImpl implements GBoardDAO {
 	public void deleteBoard(GBoardBean gb) {
 		sqlSession.delete(namespace + ".deleteBoard",gb);
 	}
+
+	@Override
+	public List<GBoardBean> listSearch(PageBean pbBean) {
+		return sqlSession.selectList(namespace + ".listSearch",pbBean);
+	}
+
+	@Override
+	public Integer SearchCount(PageBean pbBean) {
+		return sqlSession.selectOne(namespace + ".SearchCount",pbBean);
+	}
 	
 	
 	

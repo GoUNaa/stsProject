@@ -2,7 +2,6 @@ package com.home.sevice;
 
 import java.util.List;
 
-import com.home.domain.BoardBean;
 import com.home.domain.FBoardBean;
 import com.home.domain.PageBean;
 
@@ -23,5 +22,9 @@ public interface FBoardService {
 	public void updateReadcount(int num);
 
 	public void deleteBoard(FBoardBean fb);
+	
+	public List<FBoardBean> listSearch(PageBean pbBean);
+	
+	public Integer getSearchCount(PageBean pbBean);
 
 }

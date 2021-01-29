@@ -25,4 +25,9 @@ public interface FBoardDAO {
 	
 	public void deleteBoard(FBoardBean fb);
 	
+	public List<FBoardBean> listSearch(PageBean pbBean);
+
+	public Integer getSearchCount(PageBean pbBean);
+
+	
 }
