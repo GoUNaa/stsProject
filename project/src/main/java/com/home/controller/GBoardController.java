@@ -60,7 +60,6 @@ public class GBoardController {
          model.addAttribute("gboardList",gboardList);
          model.addAttribute("pbBean",pbBean);
          
-//         /WEB-INF/views/center/fnotice.jsp
          return "gcenter/gnotice";
       }
 
@@ -103,7 +102,6 @@ public class GBoardController {
           //model 데이터 담아서 보내기
           model.addAttribute("gb",gb);
           
-//          /WEB-INF/views/center/fcontent.jsp
           return "gcenter/gcontent";
        }
 
@@ -176,19 +174,17 @@ public class GBoardController {
           //model 데이터 담아서 보내기
           model.addAttribute("gb",gb);
                 
-//          /WEB-INF/views/center/deleteForm.jsp
           return "gcenter/gdeleteForm";
        }
        
-//       　http://localhost:8080/FunWeb/board/fdelete　　　/board/fdelete　가상주소 POST방식
        @RequestMapping(value = "/gboard/gdelete", method = RequestMethod.POST)
        public String fdeletePost(GBoardBean gb,Model model) {
           // num pass 일치 여부 확인
-          // select * from board where num=? and pass=?
+          // select * from gboard where num=? and pass=?
           GBoardBean gb2 = gBoardService.numCheck(gb);
           
           if(gb2 != null) {
-             //delete from board where num=?
+             //delete from gboard where num=?
              // // num pass 일치
              gBoardService.deleteBoard(gb);
              // response.sendRedirect() 같음
@@ -198,7 +194,6 @@ public class GBoardController {
              // num pass 틀림
              // msg =" 입력하신 정보는 틀립니다"  model 저장
              model.addAttribute("msg","입력하신 정보는 틀립니다");
-//             /WEB-INF/views/center/msg.jsp
              return "fcenter/msg";
           }
        }

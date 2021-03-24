@@ -23,4 +23,3 @@ if(id != null){
 
 </footer>
 
-<!-- //<a href="../mail/mailForm.jsp">  </a>-->

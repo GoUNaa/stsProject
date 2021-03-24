@@ -60,7 +60,6 @@ public class FBoardController {
           model.addAttribute("fboardList",fboardList);
           model.addAttribute("pbBean",pbBean);
           
-//          /WEB-INF/views/center/fnotice.jsp
           return "fcenter/fnotice";
        }
 	   
@@ -104,7 +103,6 @@ public class FBoardController {
              //model 데이터 담아서 보내기
              model.addAttribute("fb",fb);
              
-//             /WEB-INF/views/center/fcontent.jsp
              return "fcenter/fcontent";
           }
           
@@ -136,7 +134,6 @@ public class FBoardController {
            //model 데이터 담아서 보내기
            model.addAttribute("fb",fb);
                  
-//           /WEB-INF/views/center/fupdateForm.jsp
            return "fcenter/fupdateForm";
         }   
         
@@ -177,7 +174,6 @@ public class FBoardController {
 
            FBoardBean fb2 = fBoardService.numCheck(fb);
            if(fb2!=null) {
-              //update board set name=?,subject=?,content=?,file=? where num=?
               // // num pass 일치
               fBoardService.fupdateBoard(fb);
               // response.sendRedirect() 같음
@@ -190,7 +186,6 @@ public class FBoardController {
            }
         }
         
-       // /board/delete?num=${bb.num }
        @RequestMapping(value = "/fboard/fdelete", method = RequestMethod.GET)
        public String fdelete(Model model,HttpServletRequest request) {
           //request num 파라미터 가져오기
@@ -200,19 +195,16 @@ public class FBoardController {
           //model 데이터 담아서 보내기
           model.addAttribute("fb",fb);
                 
-//          /WEB-INF/views/center/deleteForm.jsp
           return "fcenter/fdeleteForm";
        }
        
-//       　http://localhost:8080/FunWeb/board/fdelete　　　/board/fdelete　가상주소 POST방식
        @RequestMapping(value = "/fboard/fdelete", method = RequestMethod.POST)
        public String fdeletePost(FBoardBean fb,Model model) {
           // num pass 일치 여부 확인
-          // select * from board where num=? and pass=?
           FBoardBean fb2 = fBoardService.numCheck(fb);
           
           if(fb2 != null) {
-             //delete from board where num=?
+             //delete from fboard where num=?
              // // num pass 일치
              fBoardService.deleteBoard(fb);
              // response.sendRedirect() 같음
@@ -222,7 +214,6 @@ public class FBoardController {
              // num pass 틀림
              // msg =" 입력하신 정보는 틀립니다"  model 저장
              model.addAttribute("msg","입력하신 정보는 틀립니다");
-//             /WEB-INF/views/center/msg.jsp
              return "fcenter/msg";
           }
        }
