@@ -21,7 +21,7 @@
 <body>
 <div id="wrap">
 <!-- 헤더파일들어가는 곳 -->
-<jsp:include page="../inc/top.jsp"/>
+<c:import url = "../inc/top.jsp" charEncoding = "UTF-8" />
 <!-- 헤더파일들어가는 곳 -->
 <!-- 메인이미지 들어가는곳 -->
 <div class="clear"></div>
@@ -100,7 +100,7 @@ quis ante......</dd>
 <!-- 메인 콘텐츠 들어가는 곳 -->
 <div class="clear"></div>
 <!-- 푸터 들어가는 곳 -->
-<jsp:include page="../inc/bottom.jsp"/>
+<c:import url = "../inc/bottom.jsp" charEncoding = "UTF-8" />
 <!-- 푸터 들어가는 곳 -->
 </div>
 </body>

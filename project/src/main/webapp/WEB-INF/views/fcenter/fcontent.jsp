@@ -12,7 +12,7 @@
 <body>
 <div id="wrap">
 <!-- 헤더들어가는 곳 -->
-<jsp:include page="../inc/top.jsp"/>
+<c:import url = "../inc/top.jsp" charEncoding = "UTF-8" />
 <!-- 헤더들어가는 곳 -->
 
 <!-- 본문들어가는 곳 -->
@@ -60,7 +60,7 @@
 <!-- 본문들어가는 곳 -->
 <div class="clear"></div>
 <!-- 푸터들어가는 곳 -->
-<jsp:include page="../inc/bottom.jsp"/>
+<c:import url = "../inc/bottom.jsp" charEncoding = "UTF-8" />
 <!-- 푸터들어가는 곳 -->
 </div>
 </body>

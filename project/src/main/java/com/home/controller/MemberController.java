@@ -107,7 +107,6 @@ public class MemberController {
 	public String login() {
 		System.out.println("MemberController -  login");
 
-//			/WEB-INF/views/member/login.jsp
 		return "member/login";
 	}
 
@@ -121,12 +120,10 @@ public class MemberController {
 			// 세션값 생성 "id",id
 			session.setAttribute("id", mb.getId());
 
-//				/main/main 가상주소 이동
 			// response.sendRedirect() 같음
 			return "redirect:/main/main";
 		} else {
 			model.addAttribute("msg", "입력하신 정보 틀립니다.");
-//				/WEB-INF/views/member/msg.jsp
 			return "member/msg";
 		}
 	}
@@ -136,7 +133,6 @@ public class MemberController {
 		System.out.println("MemberController - logout");
 		// 세션값 전체삭제
 		session.invalidate();
-//					http://localhost:8080/FunWeb/main/main 가상주소 이동
 		// response.sendRedirect() 같음
 		return "redirect:/main/main";
 	}
@@ -166,7 +162,6 @@ public class MemberController {
 			model.addAttribute("msg", "입력하신 정보는 틀립니다.");
 			return "member/msg";
 		}
-		// /WEB-INF/views/member/main
 		return "/main/main";
 	}
 
@@ -195,7 +190,6 @@ public class MemberController {
 			model.addAttribute("msg", "입력하신 정보는 틀립니다.");
 			return "member/msg";
 		}
-		// /WEB-INF/views/member/main
 		return "redirect:/main/main";
 	}
 
