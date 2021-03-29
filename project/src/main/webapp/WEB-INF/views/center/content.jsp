@@ -34,7 +34,6 @@
 <tr><td>글번호</td><td>${bb.num }</td> <td>글쓴날짜</td><td>${bb.date }</td></tr>
 <tr><td>작성자</td><td>${bb.name }</td><td>조회수</td><td>${bb.readcount }</td></tr>
 <tr><td>제목</td><td colspan="3">${bb.subject }</td></tr>
-<%-- <tr><td>파일</td><td colspan="3"><a href="../upload/<%=bb.getFile() %>"><%=bb.getFile() %></a><img src="../upload/<%=bb.getFile() %>" width="50" height="50"></td></tr> --%>
 <tr><td>내용</td><td colspan="3">${bb.content }</td></tr>
 
 <div id="table_search">
