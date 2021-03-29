@@ -57,7 +57,6 @@ public class BoardController {
 	      model.addAttribute("boardList",boardList);
 	      model.addAttribute("pbBean",pbBean);
 	      
-//	      /WEB-INF/views/center/notice.jsp
 	      return "center/notice";
 	   }
 	
@@ -76,7 +75,6 @@ public class BoardController {
 	      //model 데이터 담아서 보내기
 	      model.addAttribute("bb",bb);
 	      
-//	      /WEB-INF/views/center/content.jsp
 	      return "center/content";
 	   }
 	   
@@ -86,7 +84,6 @@ public class BoardController {
 	   public String write() {
     	   System.out.println("보드컨트롤러 - writeGET");
 
-//	      /WEB-INF/views/center/writeForm.jsp
 	      return "center/writeForm";
 	   }
 	   
@@ -130,7 +127,6 @@ public class BoardController {
              // num pass 틀림
              // msg =" 입력하신 정보는 틀립니다"  model 저장
              model.addAttribute("msg","입력하신 정보는 틀립니다");
-//             /WEB-INF/views/center/msg.jsp
              return "center/msg";
           }
        }
@@ -148,7 +144,6 @@ public class BoardController {
 	      //model 데이터 담아서 보내기
 	      model.addAttribute("bb",bb);
                 
-//          /WEB-INF/views/center/deleteForm.jsp
           return "center/deleteForm";
        }
        
@@ -170,7 +165,6 @@ public class BoardController {
              // num pass 틀림
              // msg =" 입력하신 정보는 틀립니다"  model 저장
              model.addAttribute("msg","입력하신 정보는 틀립니다");
-//             /WEB-INF/views/center/msg.jsp
              return "center/msg";
           }
        }

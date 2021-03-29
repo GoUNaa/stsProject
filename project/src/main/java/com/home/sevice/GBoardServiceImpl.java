@@ -18,7 +18,6 @@ public class GBoardServiceImpl implements GBoardService {
 
 	@Override
 	public List<GBoardBean> getGBoardList(PageBean pbBean) {
-		System.out.println("갤러리게시판 겟보드리스트");
 		return gBoardDAO.getGBoardList(pbBean);
 	}
 

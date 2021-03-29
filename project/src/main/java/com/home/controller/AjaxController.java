@@ -38,7 +38,6 @@ public class AjaxController {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>(result,HttpStatus.BAD_REQUEST);
 		}
-//		/WEB-INF/views/member/join.jsp
 		return entity;
 	}
 	

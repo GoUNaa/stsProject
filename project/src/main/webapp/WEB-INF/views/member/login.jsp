@@ -25,7 +25,7 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="#">회원가입</a></li>
+<li><a href='<c:url value="/member/insert"/> '>회원가입</a></li>
 </ul>
 </nav>
 <article>

@@ -81,7 +81,6 @@ public class MemberController {
 			properties.put("mail.smtp.port", "587"); // gmail 포트
 			Authenticator auth = new MailServiceImpl();
 			Session s = Session.getDefaultInstance(properties, auth);
-			// Session s = Session.getdefultInstance(properties, auth);
 			Message message = new MimeMessage(s);
 			Address sender_address = new InternetAddress(sender);
 			Address receiver_address = new InternetAddress(receiver);
