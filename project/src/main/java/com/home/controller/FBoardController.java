@@ -45,17 +45,17 @@ public class FBoardController {
           }else {
              pbBean.setPageNum(pageNum);
           }
-          
+          List<FBoardBean> fboardList = fBoardService.getFBoardList(pbBean);
+          pbBean.setCount(fBoardService.getFBoardCount());
           if(search != null) {
         	  pbBean.setSearch(search);
+              fboardList = fBoardService.listSearch(pbBean);
+              pbBean.setCount(fBoardService.getSearchCount(pbBean));
+              
           } else {
         	  pbBean.setSearch("");
           }
-          List<FBoardBean> fboardList = fBoardService.listSearch(pbBean);
-          
-          //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
-          pbBean.setCount(fBoardService.getSearchCount(pbBean));
-          
+
           //model 데이터 담아서 보내기
           model.addAttribute("fboardList",fboardList);
           model.addAttribute("pbBean",pbBean);

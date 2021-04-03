@@ -33,7 +33,7 @@ public class BoardController {
 	      // 한페이지에 보여줄 글개수 설정 pageSize
 	      pbBean.setPageSize(15);
 
-	   //  pageNum 파라미터 가져오기
+	      //  pageNum 파라미터 가져오기
 	      String pageNum=request.getParameter("pageNum");
 	      // pageNum없으면  "1" 페이지 설정
 	      if(pageNum==null) {
@@ -41,18 +41,30 @@ public class BoardController {
 	      }else {
 	         pbBean.setPageNum(pageNum);
 	      }
+	      
+	      List<BoardBean> boardList = boardService.getBoardList(pbBean);
+  	      pbBean.setCount(boardService.getBoardCount());
+	      
 	      // List boardList   = getBoardList(pbBean) 메서드 만들 호출
 	      if(search != null){
 	  	      pbBean.setSearch(search);
+		       boardList=boardService.listSearch(pbBean);
+	  	      pbBean.setCount(boardService.getSearchCount(pbBean));
 	      } else {
 	    	  pbBean.setSearch("");
 
 	      }
-	      List<BoardBean> boardList=boardService.listSearch(pbBean);
-
-	      //setCount 호출 => 페이징 관련 작업  PageBean 안에서 함
-	      pbBean.setCount(boardService.getSearchCount(pbBean));
 	      
+	      System.out.println("-------------");
+	      System.out.println("getPageSize"+pbBean.getPageSize());
+	      System.out.println("getNum" + pbBean.getPageNum());
+	      System.out.println("getPageCount"+pbBean.getPageCount());
+	      System.out.println("getStartPage"+pbBean.getStartPage());
+	      System.out.println("getEndPage"+pbBean.getEndPage());
+	      System.out.println("getCurrentPage"+pbBean.getCurrentPage());
+	      System.out.println("" + pbBean.getStartRow());
+	      System.out.println("-------------");
+
 	      //model 데이터 담아서 보내기
 	      model.addAttribute("boardList",boardList);
 	      model.addAttribute("pbBean",pbBean);
